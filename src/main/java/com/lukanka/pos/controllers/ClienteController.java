@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.lukanka.pos.services.impl.CategoriaImpl;
 import com.lukanka.pos.services.impl.ClienteImpl;
 
 @Controller
@@ -14,9 +15,12 @@ public class ClienteController {
 
     @Autowired
     private ClienteImpl clienteImpl;
+    @Autowired
+    private CategoriaImpl categoriaImpl;
 
     @GetMapping({ "/", "", "/home" })
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("categorias", this.categoriaImpl.listarCategorias());
         return "index";
     }
 
@@ -25,4 +29,5 @@ public class ClienteController {
         model.addAttribute("clientes", clienteImpl.listarClientes());
         return "clientes";
     }
+    
 }

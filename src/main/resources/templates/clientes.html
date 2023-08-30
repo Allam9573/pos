@@ -38,6 +38,11 @@
                     </tr>
                 </tbody>
             </table>
+          
+        </div>
+
+        <div class="text-center" th:if="${clientes.size() == 0}">
+            <h3>No hay clientes registrados</h3>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Nuevo Cliente
             </button>
@@ -50,7 +55,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form th:action="@{/api/crear-cliente}" method="post">
+                            <form th:action="@{/api/clientes/nuevo-cliente}" method="post">
                                 <div class="mb-3">
                                     <input type="text" name="nombre" placeholder="Nombre del cliente"
                                         class="form-control">
@@ -70,13 +75,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="text-center" th:if="${clientes.size() == 0}">
-            <h3>No hay clientes registrados</h3>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Nuevo Cliente
-            </button>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"

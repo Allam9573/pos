@@ -25,7 +25,7 @@ public class ClienteRest {
         cliente.setCorreo(correo);
         cliente.setTelefono(telefono);
         clienteImpl.guardarCliente(cliente);
-        return redirect;
+        return redirect;    
     }
 
 }
